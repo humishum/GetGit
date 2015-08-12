@@ -5,14 +5,52 @@
 //Requires
 var express = require('express');
 var fs      = require('fs');
-var request = request('request');
+var request = require('request');
 var cheerio = require('cheerio');
 var app     = express();
 
 //This is where the magic happens
 app.get('/scrape',function(req,res){
-  
+
+    //profile we're scraping
+    url = 'http://github.com/humishum/';
     
+    request(url, function(error,response, html){
+     
+        // error check
+        if(!error){
+            var $ = cheerio.load(html);
+            
+            //define vars to scrape
+        var name, yearContri;
+        var json = { name : "", yearContri : ""}
+        
+// span class for fullname
+$('.vcard-fullname').filter(function(){
+    //store filtered data into a var
+    var data = $(this);
+            
+    name = data.text();
+            
+    json.name = name;
+            
+            })
+// span class for contr.number                
+$('contrib-column-first').filter(function(){
+                    
+    var data = $(this);
+                    
+    yearContri = data.nextAll().text();
+    
+    json.yearContri = yearContri;
+                })
+        }
+        
+fs.writeFile('output.json', JSON.stringify(json, null, 4), function(err){
+            console.log('Success!');
+        })
+        res.send('Check the console lad')
+    }) ;   
 })
 
 // app is on 8080
