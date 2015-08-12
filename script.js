@@ -36,11 +36,11 @@ $('.vcard-fullname').filter(function(){
             
             })
 // span class for contr.number                
-$('contrib-column-first').filter(function(){
+$('.contrib-number').filter(function(){
                     
     var data = $(this);
                     
-    yearContri = data.nextAll().text();
+    yearContri = data.first().text();
     
     json.yearContri = yearContri;
                 })
