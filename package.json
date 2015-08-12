@@ -1,0 +1,13 @@
+{
+    "name"          : "GetGit",
+    "version"       : "0.0.1",
+    "description"   : "Scrape Git profiles for stuff.",
+    "main"          : "script.js",
+    "dependencies"  : {
+        "express"   : "latest",
+        "request"   : "latest",
+        "cheerio"   : "latest"
+        
+    }
+    
+}
