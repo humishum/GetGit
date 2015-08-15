@@ -39,7 +39,7 @@ $('.vcard-fullname').filter(function(){
 $('.contrib-number').filter(function(){
                     
     var data = $(this);
-                    
+    //fix this to get actual first one                 
     yearContri = data.first().text();
     
     json.yearContri = yearContri;
