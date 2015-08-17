@@ -44,6 +44,7 @@ $('.contrib-number').filter(function(){
     
     json.yearContri = yearContri;
                 })
+
         }
         
 fs.writeFile('output.json', JSON.stringify(json, null, 4), function(err){
