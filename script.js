@@ -8,12 +8,12 @@ var fs      = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
 var app     = express();
-
+var username = 'humishum';
 //This is where the magic happens
 app.get('/scrape',function(req,res){
 
     //profile we're scraping
-    url = 'http://github.com/humishum/';
+    url = 'http://github.com/'+username;
     
     request(url, function(error,response, html){
      
