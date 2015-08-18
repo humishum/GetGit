@@ -8,7 +8,18 @@ var fs      = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
 var app     = express();
-var username = 'humishum';
+var prompt  = require('prompt');
+var uname;
+
+//start prompt
+prompt.start();
+
+prompt.get(['username'], function(err, result){
+   
+    uname = result.username;
+    console.log('username:' + result.username);
+});
+console.log(uname);
 //This is where the magic happens
 app.get('/scrape',function(req,res){
 
@@ -57,7 +68,7 @@ fs.writeFile('output.json', JSON.stringify(json, null, 4), function(err){
 // app is on 8080
 app.listen('8080')
 //confirmation that app is running
-console.log('Magic is happening on 8080');
+console.log('running 8080');
 
 //idk why i need this tbh
 exports = module.exports = app
