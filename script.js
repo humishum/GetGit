@@ -14,29 +14,25 @@ var prompt  = require('prompt');
 var uname;
 //start prompt
 prompt.start();
-
+// Gets Username and store into uname var for usage
 prompt.get(['username'], function(err, result){
-   
+    
     uname = result.username;
     
 });
 
 //This is where the magic happens
 app.get('/scrape',function(req,res){
-
     //profile we're scraping
     url = 'http://github.com/'+uname;
     
     request(url, function(error,response, html){
-     
         // error check
         if(!error){
-            var $ = cheerio.load(html);
-            
+            var $ = cheerio.load(html);    
             //define vars to scrape
-        var name, yearContri;
-        var json = { name : "", yearContri : ""}
-        
+        var name, Cstreak;
+        var json = { name : "", Cstreak : ""}   
 // span class for fullname
 $('.vcard-fullname').filter(function(){
     //store filtered data into a var
@@ -46,25 +42,24 @@ $('.vcard-fullname').filter(function(){
             
     json.name = name;
             
-            })
+})
 // span class for contr.number                
 $('.contrib-number').filter(function(){
                     
     var data = $(this);
     //fix this to get actual first one.                
-    yearContri = data.first().text();
+    Cstreak = data.first().text();
     
-    json.yearContri = yearContri;
+    json.Cstreak = Cstreak;
                 })
-
         }
         
 fs.writeFile('output.json', JSON.stringify(json, null, 4), function(err){
             console.log('Success!');
         })
-        res.send('Check the console lad')
+        res.send('Check the console m8')
         console.log('Name:'+name);
-console.log('Contribution Streak:' + yearContri);
+        console.log('Contribution Streak:' + Cstreak);
     }) ;  
 })
 
@@ -73,6 +68,5 @@ console.log('Contribution Streak:' + yearContri);
 app.listen('8080')
 //confirmation that app is running
 console.log('running 8080');
-
 //idk why i need this tbh
 exports = module.exports = app
