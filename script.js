@@ -1,6 +1,7 @@
 // Author:Humdaan Mustafa
 // Github: http://github.com/humishum/GetGit
 // GetGit: Simple Tool to scrape git commits n' stuff
+// npm install getgit
 
 //Requires
 var express = require('express');
@@ -9,17 +10,17 @@ var request = require('request');
 var cheerio = require('cheerio');
 var app     = express();
 var prompt  = require('prompt');
-var uname;
 
+var uname;
 //start prompt
 prompt.start();
 
 prompt.get(['username'], function(err, result){
    
     uname = result.username;
-    console.log(uname);
+    
 });
-//console.log(uname);
+
 //This is where the magic happens
 app.get('/scrape',function(req,res){
 
@@ -62,8 +63,11 @@ fs.writeFile('output.json', JSON.stringify(json, null, 4), function(err){
             console.log('Success!');
         })
         res.send('Check the console lad')
-    }) ;   
+        console.log('Name:'+name);
+console.log('Contribution Streak:' + yearContri);
+    }) ;  
 })
+
 
 // app is on 8080
 app.listen('8080')
