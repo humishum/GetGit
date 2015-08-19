@@ -17,14 +17,14 @@ prompt.start();
 prompt.get(['username'], function(err, result){
    
     uname = result.username;
-    console.log('username:' + result.username);
+    console.log(uname);
 });
-console.log(uname);
+//console.log(uname);
 //This is where the magic happens
 app.get('/scrape',function(req,res){
 
     //profile we're scraping
-    url = 'http://github.com/'+username;
+    url = 'http://github.com/'+uname;
     
     request(url, function(error,response, html){
      
