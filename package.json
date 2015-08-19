@@ -1,13 +1,15 @@
 {
-    "name"          : "GetGit",
-    "version"       : "0.0.1",
+    "name"          : "getgit",
+    "version"       : "1.0.1",
+    "author"        : "Humdaan Mustafa",
     "description"   : "Scrape Git profiles for stuff.",
+    "entry point"   : "script.js",
     "main"          : "script.js",
     "dependencies"  : {
         "express"   : "latest",
         "request"   : "latest",
         "cheerio"   : "latest",
-	"prompt"    : "latest"
+		"prompt"    : "latest"
         
     }
     
