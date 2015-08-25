@@ -44,14 +44,17 @@ $('.vcard-fullname').filter(function(){
             
 })
 // span class for contr.number                
-$('.contrib-number').filter(function(){
+
+$( document ).ready('.contrib-number').filter(function(){
                     
     var data = $(this);
     //fix this to get actual first one.                
+    
     Cstreak = data.first().text();
     
     json.Cstreak = Cstreak;
                 })
+
         }
         
 fs.writeFile('output.json', JSON.stringify(json, null, 4), function(err){
